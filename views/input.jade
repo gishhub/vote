@@ -1,0 +1,78 @@
+body.
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  
+  <script type="text/javascript">
+    var count = 1;
+    
+    jQuery(document).ready(function($) {
+      $("#add_btn").click(function() {
+        if (count == 5) {
+          alert("You can input until 5 choices.");
+        } else {
+          var original = $("#choice"+count);
+          var cloned = $(original).clone();
+          $(original).after(cloned);
+        
+          count++;
+          $(cloned).attr("id", "choice"+count);
+          $(cloned).attr("name", "choice"+count);
+          $(cloned).attr("placeholder", "Choice"+count);
+        }
+      });
+    });
+  </script>
+  
+  <style type="text/css">
+    body {
+      padding-top: 20px;
+      padding-bottom: 60px;
+    }
+
+    /* Custom container */
+    .container {
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+    .container > hr {
+      margin: 60px 0;
+    }
+  </style>
+
+  <div class="container">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Project name</a>
+            <ul class="nav">
+              <li><a href="/">Top</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <div class="container">
+      <form class="well" method="post" action="/confirm">
+        <h2>Please input detail about your question.</h2>
+        <hr>
+        <fieldset>
+          <label>Question title</label>
+          <input type="text" id="title" name="title" class="input-block-level" placeholder="Title">
+          <label>Question detail</label>
+          <textarea rows="15" id="description" name="description" class="input-block-level" placeholder="Description"></textarea>
+          <label>Choise</label>
+          <input type="text" id="choice1" name="choice1" class="input-block-level" placeholder="Choice1">
+          <input type="button" class="btn btn-large btn-success pull-right" id="add_btn" value="Add choice">
+          <br>
+          <br>
+          <label class="input-block-level">Password</label>
+          <input type="password" id="password" name="password" class="input-block-level" placeholder="Password">
+        </fieldset>
+        <hr>
+        <button class="btn btn-large btn-primary" type="submit">Confirm</button>
+      </form>
+    </div>
+
+  </div>
