@@ -15,11 +15,37 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/confirm.css")
   br
 
   .container
-    form.well(method="post", action="/confirm")
+    form.well(method="get", action="/confirm")
       h2 質問内容を確認してください。
       hr
       
-      label Nickname
-      #{locals.nickname}
+      each val, key in items
+        if val.length > 0
+          case key
+            when "nickname"
+              label Nickname
+              h3 #{val}
+            when "title"
+              label Question title
+              h3 #{val}
+            when "description"
+              label Question detail
+              h3 #{val}
+            when "choice1"
+              label Choice1
+              h3 #{val}
+            when "choice2"
+              label Choice2
+              h3 #{val}
+            when "choice3"
+              label Choice3
+              h3 #{val}
+            when "choice4"
+              label Choice4
+              h3 #{val}
+            when "choice5"
+              label Choice5
+              h3 #{val}
+      
 
 

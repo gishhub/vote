@@ -14,5 +14,5 @@ exports.input = function(req, res){
 exports.confirm = function(req, res){
   console.log(req.body);
   
-  res.render('confirm', {title: 'Vote', locals: req.body})
+  res.render('confirm', {title: 'Vote', items: req.body})
 };

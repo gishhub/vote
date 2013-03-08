@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
     count++;
     $(cloned).attr("id", "choice"+count);
     $(cloned).attr("name", "choice"+count);
+    $(cloned).attr("value", "");
     $(cloned).attr("placeholder", "Choice"+count);
 
     if (count == 5) {
