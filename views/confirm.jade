@@ -1,0 +1,25 @@
+link(rel="stylesheet", type="text/css", href="/stylesheets/confirm.css")
+
+.container
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        a.brand(href="/") Vote
+        ul.nav
+          li
+            a(href="/") Top
+          li
+            a(href="/") Link
+
+  br
+  br
+
+  .container
+    form.well(method="post", action="/confirm")
+      h2 質問内容を確認してください。
+      hr
+      
+      label Nickname
+      #{locals.nickname}
+
+

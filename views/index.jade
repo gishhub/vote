@@ -1,83 +1,48 @@
-body.
-  <style type="text/css">
-    body {
-      padding-top: 20px;
-      padding-bottom: 60px;
-    }
+link(rel="stylesheet", type="text/css", href="/stylesheets/index.css")
 
-    /* Custom container */
-    .container {
-      margin: 0 auto;
-      max-width: 1000px;
-    }
-    .container > hr {
-      margin: 60px 0;
-    }
+.container
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        a.brand(href="/") Vote
+        ul.nav
+          li
+            a(href="/") Top
+          li
+            a(href="/") Link
 
-    /* Main marketing message and sign up button */
-    .hero-unit {
-      margin: 80px 0;
-      text-align: center;
-    }
-    .hero-unit h1 {
-      font-size: 90px;
-      line-height: 1;
-    }
-    .hero-unit .lead {
-      font-size: 24px;
-      line-height: 1.25;
-    }
-    .hero-unit .btn {
-      font-size: 21px;
-      padding: 14px 24px;
-    }
-  </style>
+  .hero-unit
+    h1 Let's Vote!
+    p.lead ここはみんなで投票していくサイトです。
+    p
+    
+    form(method="post", action="/input")
+      button.btn.btn-large.btn-success(type="submit") Get started today
 
-  <div class="container">
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="#">Project name</a>
-            <ul class="nav">
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-        </div>
-      </div>
-    </div>
+  .row-fluid
+    .span4
+      h2 Heading
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+      p
+        buton.btn(href="#") View details &raquo;
+      p
+    .span4
+      h2 Heading
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+      p
+        buton.btn(href="#") View details &raquo;
+      p
+    .span4
+      h2 Heading
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+      p
+        buton.btn(href="#") View details &raquo;
+      p
 
-    <div class="hero-unit">
-      <h1>Let's Vote!</h1>
-      <p class="lead">
-        This service, you can ask for everyone using option.
-      </p>
-      <form method="get" action="/input">
-        <button class="btn btn-large btn-success" type="submit">Get started today</button>
-      </form>
-    </div>
+  hr
 
-    <div class="row-fluid">
-      <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
-      </div>
-      <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
-      </div>
-      <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="footer">
-      <p>&copy; Gishhub 2013</p>
-    </div>
-
-  </div>
+  .footer
+    p &copy; Gishhub 2013

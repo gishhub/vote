@@ -15,7 +15,7 @@ app.configure(function(){
   app.set('view engine', 'jade');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-app.use(express.compiler({ src : __dirname + '/public', enable: ['less']}));
+  app.use(express.compiler({ src : __dirname + '/public', enable: ['less']}));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -40,9 +40,8 @@ express.compiler.compilers.less.compile = function(str, fn){
 }
 
 // Routes
-
 app.get('/', routes.index);
-app.get('/input', routes.input);
+app.post('/input', routes.input);
 app.post('/confirm', routes.confirm);
 
 app.listen(3000, function(){

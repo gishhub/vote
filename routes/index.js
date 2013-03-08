@@ -4,13 +4,15 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Vote' })
+  res.render('index', {title: 'Vote'})
 };
 
 exports.input = function(req, res){
-  res.render('input', { title: 'Vote' })
+  res.render('input', {title: 'Vote'})
 };
 
 exports.confirm = function(req, res){
-  res.render('confirm', { title: 'Vote' })
+  console.log(req.body);
+  
+  res.render('confirm', {title: 'Vote', locals: req.body})
 };

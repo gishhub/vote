@@ -1,78 +1,42 @@
-body.
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  
-  <script type="text/javascript">
-    var count = 1;
-    
-    jQuery(document).ready(function($) {
-      $("#add_btn").click(function() {
-        if (count == 5) {
-          alert("You can input until 5 choices.");
-        } else {
-          var original = $("#choice"+count);
-          var cloned = $(original).clone();
-          $(original).after(cloned);
-        
-          count++;
-          $(cloned).attr("id", "choice"+count);
-          $(cloned).attr("name", "choice"+count);
-          $(cloned).attr("placeholder", "Choice"+count);
-        }
-      });
-    });
-  </script>
-  
-  <style type="text/css">
-    body {
-      padding-top: 20px;
-      padding-bottom: 60px;
-    }
+link(rel="stylesheet", type="text/css", href="/stylesheets/input.css")
+script(type="text/javascript", src="/js/input.js")
 
-    /* Custom container */
-    .container {
-      margin: 0 auto;
-      max-width: 1000px;
-    }
-    .container > hr {
-      margin: 60px 0;
-    }
-  </style>
+.container
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        a.brand(href="/") Vote
+        ul.nav
+          li
+            a(href="/") Top
+          li
+            a(href="/") Link
 
-  <div class="container">
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="#">Project name</a>
-            <ul class="nav">
-              <li><a href="/">Top</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-        </div>
-      </div>
-    </div>
+  br
+  br
 
-    <br>
-    <br>
-    <div class="container">
-      <form class="well" method="post" action="/confirm">
-        <h2>Please input detail about your question.</h2>
-        <hr>
-        <fieldset>
-          <label>Question title</label>
-          <input type="text" id="title" name="title" class="input-block-level" placeholder="Title">
-          <label>Question detail</label>
-          <textarea rows="15" id="description" name="description" class="input-block-level" placeholder="Description"></textarea>
-          <label>Choise</label>
-          <input type="text" id="choice1" name="choice1" class="input-block-level" placeholder="Choice1">
-          <input type="button" class="btn btn-large btn-success pull-right" id="add_btn" value="Add choice">
-          <br>
-          <br>
-          <label class="input-block-level">Password</label>
-          <input type="password" id="password" name="password" class="input-block-level" placeholder="Password">
-        </fieldset>
-        <hr>
-        <button class="btn btn-large btn-primary" type="submit">Confirm</button>
-      </form>
-    </div>
+  .container
+    form.well(method="post", action="/confirm")
+      h2 質問の内容を入力してください。
+      alert.alert-error
+        h3 最大で5個まで選択肢を増やせます。
+      hr
+      fieldset
+        label Nickname
+        input.input-block-level(type="text", id="nickname", name="nickname", placeholder="Nick name")
+        label Password
+        input.input-block-level(type="password", id="password", name="password", placeholder="Password")
+        label Question title
+        input.input-block-level(type="text", id="title", name="title", placeholder="Title")
+        label Question detail
+        textarea.input-block-level(rows="15", id="description", name="description", placeholder="Description")
+        label Choise
+        input.input-block-level(type="text", id="choice1", name="choice1", placeholder="Choice1")
+        input(type="button", class="btn btn-large btn-success pull-right", id="add_btn", value="選択肢追加")
+      hr
+      button.btn-large.btn-primary(type="submit") Confirm
 
-  </div>
+  hr
+
+  .footer
+    p &copy; Gishhub 2013
