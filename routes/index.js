@@ -13,6 +13,12 @@ exports.input = function(req, res){
 
 exports.confirm = function(req, res){
   console.log(req.body);
+  req.session.password = req.body.password;
+  console.log(req.session.password);
   
   res.render('confirm', {title: 'Vote', items: req.body})
+};
+
+exports.regist = function(req, res){
+  console.log(req.session.password);
 };
