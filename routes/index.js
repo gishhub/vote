@@ -21,4 +21,6 @@ exports.confirm = function(req, res){
 
 exports.regist = function(req, res){
   console.log(req.session.password);
+  
+  res.render('regist', {title: 'Vote'})
 };

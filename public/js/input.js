@@ -1,37 +1,4 @@
-var count = 2;
-
-jQuery(document).ready(function($) {
-  $("#add_btn").click(function() {
-    var original = $("#choice"+count);
-    var cloned = $(original).clone();
-    $(original).after(cloned);
-
-    count++;
-    $(cloned).val("");
-    $(cloned).attr("id", "choice"+count);
-    $(cloned).attr("name", "choice"+count);
-    $(cloned).attr("placeholder", "Choice"+count);
-
-    if (count == 5) {
-      $("#add_btn").attr("disabled", true);
-    }
-  });
-
-jQuery.validator.addMethod("check_choice", function(value, element, params) {
-  if ($(params[0]) != null && $(params[1]) != null) {
-    if ($(params[0]).val() == "" && $(params[1]) != "") {
-      return false;
-    }
-  }
-
-  if ($(params[1]) != null && $(params[2]) != null) {
-    if ($(params[1]).val() == "" && $(params[2]) != "") {
-      return false;
-    }
-  }
-});
-
-  
+jQuery(document).ready(function($) {  
   $("#question_form").validate({
     rules: {
       username: {
@@ -52,10 +19,10 @@ jQuery.validator.addMethod("check_choice", function(value, element, params) {
       choice2: {
         required: true
       },
-      choice3: {
+      choice4: {
         "check_choice1": ["#choice3", "#choice4"]
       },
-      choice4: {
+      choice5: {
         "check_choice2": ["#choice4", "#choice5"]
       }
     },
@@ -78,10 +45,10 @@ jQuery.validator.addMethod("check_choice", function(value, element, params) {
       choice2: {
         required: "選択肢は最低2つ入力してください"
       },
-      choice3: {
+      choice4: {
         "check_choice1": "選択肢は詰めて入力してください"
       },
-      choice4: {
+      choice5: {
         "check_choice2": "選択肢は詰めて入力してください"
       }
     },
@@ -91,7 +58,7 @@ jQuery.validator.addMethod("check_choice", function(value, element, params) {
 });
 
 jQuery.validator.addMethod("check_choice1", function(value, element, params) {
-  if ($(params[0]).val() == "" && $(params[1]) != "") {
+  if ($(params[0]).val() == "" && $(params[1]).val() != "") {
     return false;
   }
 
@@ -99,7 +66,7 @@ jQuery.validator.addMethod("check_choice1", function(value, element, params) {
 });
 
 jQuery.validator.addMethod("check_choice2", function(value, element, params) {
-  if ($(params[0]).val() == "" && $(params[1]) != "") {
+  if ($(params[0]).val() == "" && $(params[1]).val() != "") {
     return false;
   }
 

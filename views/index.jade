@@ -7,17 +7,15 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/index.css")
         a.brand(href="/") Vote
         ul.nav
           li
-            a(href="/") Top
-          li
-            a(href="/") Link
+            a(href="/input") 質問を作成する
 
   .hero-unit
     h1 Let's Vote!
     p.lead ここは皆さんの質問に対して他の皆さんで投票して解決していくサイトです。
     p
     
-    form(method="post", action="/input")
-      button.btn.btn-large.btn-success(type="submit") 質問を作成する
+    form(method="get", action="/input")
+      button.btn.btn-large.btn-primary(type="submit") 質問を作成する
 
   .row-fluid
     .span6
