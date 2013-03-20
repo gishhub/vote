@@ -27,9 +27,9 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/confirm.css")
             when "title"
               label 質問のタイトル
               input.input-block-level(type="text", id="title", name="title", value="#{val}", readonly="readonly")
-            when "description"
+            when "text"
               label 質問の詳細
-              textarea.input-block-level(rows="15", id="description", name="description", readonly="readonly") #{val}
+              textarea.input-block-level(rows="15", id="text", name="text", readonly="readonly") #{val}
             when "choice1"
               label 選択肢1
               input.input-block-level(type="text", id="choice1", name="choice1", value="#{val}", readonly="readonly")
@@ -53,6 +53,3 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/confirm.css")
 
   .footer
     p &copy; Gishhub 2013
-      
-
-

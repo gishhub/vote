@@ -46,6 +46,9 @@ app.get('/', routes.index);
 app.get('/input', routes.input);
 app.post('/confirm', routes.confirm);
 app.post('/regist', routes.regist);
+app.get('/qid=*', routes.display);
+app.post('/edit', routes.edit);
+app.post('/vote', routes.vote);
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

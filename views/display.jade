@@ -1,0 +1,64 @@
+link(rel="stylesheet", type="text/css", href="/stylesheets/display.css")
+
+.container
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        a.brand(href="/") Vote
+        ul.nav
+          li
+            a(href="/input") 質問を作成する
+
+  br
+  br
+
+  .container
+    form.well(method="get", action="/vote")
+      h2 #{items.title}
+      hr
+
+      label 質問者
+      h4 #{items.username} さん
+      br
+      label 質問内容
+      h3 #{items.text}
+      hr
+
+      alert.alert-error
+        h4 どれかひとつ選択してください
+        br
+
+      - items.choices.forEach(function(choice){
+        label.radio
+          case choice.id
+            when 1
+              input(type="radio", id="#{choice.id}", name="choice", value="#{choice.id}", checked)
+            default
+              input(type="radio", id="#{choice.id}", name="choice", value="#{choice.id}")
+          strong #{choice.choice}
+          span.pull-right #{choice.vote}%
+          case choice.id
+            when 1
+              .progress.progress-danger.progress-striped.active
+                .bar(style="width: #{choice.vote}%;")
+            when 2
+              .progress.progress-info.progress-striped.active
+                .bar(style="width: #{choice.vote}%;")
+            when 3
+              .progress.progress-success.progress-striped.active
+                .bar(style="width: #{choice.vote}%;")
+            when 4
+              .progress.progress-striped.active
+                .bar(style="width: #{choice.vote}%;")
+            when 5
+              .progress.progress-warning.progress-striped.active
+                .bar(style="width: #{choice.vote}%;")
+      - })
+
+      hr
+      button.btn-large.btn-primary(type="submit") 投票する
+
+  hr
+
+  .footer
+    p &copy; Gishhub 2013
