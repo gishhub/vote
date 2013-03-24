@@ -23,7 +23,7 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/confirm.css")
           case key
             when "username"
               label ニックネーム
-              input.input-block-level(type="text", id="nickname", name="nickname", value="#{val}", readonly="readonly")
+              input.input-block-level(type="text", id="username", name="username", value="#{val}", readonly="readonly")
             when "title"
               label 質問のタイトル
               input.input-block-level(type="text", id="title", name="title", value="#{val}", readonly="readonly")
@@ -47,7 +47,7 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/confirm.css")
               input.input-block-level(type="text", id="choice5", name="choice5", value="#{val}", readonly="readonly")
 
       hr
-      button.btn-large.btn-primary(type="submit") 送信する
+      button.btn-large.btn-primary(type="submit") 登録する
 
   hr
 

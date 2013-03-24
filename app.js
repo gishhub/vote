@@ -17,7 +17,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.compiler({ src : __dirname + '/public', enable: ['less']}));
   app.use(express.cookieParser());
-  app.use(express.session({secret: "password"}));
+  app.use(express.session({secret: 'secret'}));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -46,10 +46,10 @@ app.get('/', routes.index);
 app.get('/input', routes.input);
 app.post('/confirm', routes.confirm);
 app.post('/regist', routes.regist);
-app.get('/qid=*', routes.display);
+app.get('/display*', routes.display);
 app.post('/edit', routes.edit);
 app.post('/vote', routes.vote);
 
 app.listen(3000, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  console.log('Express server listening on port %d in %s mode', app.address().port, app.settings.env);
 });

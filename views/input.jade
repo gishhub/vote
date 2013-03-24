@@ -17,13 +17,11 @@ script(type="text/javascript", src="/js/input.js")
     form.well(id="question_form", method="post", action="/confirm")
       h2 質問の内容を入力してください。
       alert.alert-info
-        h3 最大で5個まで選択肢を増やせます。
+        h3 選択肢は最大で5つです。
       hr
       fieldset
         label ニックネーム
         input.input-block-level(type="text", id="username", name="username", placeholder="Nick name")
-        label パスワード(この質問の編集するときに必要になります)
-        input.input-block-level(type="password", id="password", name="password", placeholder="Password")
         label 質問のタイトル
         input.input-block-level(type="text", id="title", name="title", placeholder="Title")
         label 質問の詳細

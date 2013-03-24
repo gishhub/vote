@@ -16,7 +16,8 @@ exports.input = function(req, res){
 exports.confirm = function(req, res){
   console.log(req.body);
   // keep password to session
-  req.session.password = req.body.password;
+  // req.session.password = req.body.password;
+  req.session.password = '';
   console.log(req.session.password);
 
   res.render('confirm', {title: 'Vote', items: req.body})
@@ -28,16 +29,20 @@ exports.regist = function(req, res){
 
   // send request to API
   var options = {
-    host: '',
-    port: 3333,
-    path: '/1.0/questions/post/',
-    method: 'PUT'
+    host: '192.168.11.32',
+    port: 8099,
+    path: '/questions/post',
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'text/json'
+    }
   };
 
-  var request = http.request(options, function(res){
-    res.setEncoding('utf8');
-    res.on('data', function(chunk){
+  var request = http.request(options, function(response){
+    response.setEncoding('utf8');
+    response.on('data', function(chunk){
       console.log('BODY: ' + chunk);
+      res.render('regist', {title: 'Vote', qid: JSON.parse(chunk)['_id']['$oid']})
     });
   });
 
@@ -45,35 +50,34 @@ exports.regist = function(req, res){
     console.log('problem with request: ' + e.message);
   });
 
-  request.write(req.body);
+  request.write(JSON.stringify(req.body));
   request.end();
-
-  res.render('regist', {title: 'Vote'})
 };
 
 exports.display = function(req, res){
-  var body = '';
+  console.log(req.query.qid);
 
-  // get responce from API
-  /*
+  req.session.qid = req.query.qid;
+
+  // get response from API
   var options = {
-    host: 'www.google.co.jp',
-    port: 80,
-    path: '/index.html'
+    host: '192.168.11.32',
+    port: 8099,
+    path: '/questions/get?qid=' + req.query.qid
   };
 
-  http.get(options, function(res){
-    console.log("Got response: " + res.statusCode);
+  http.get(options, function(response){
+    console.log('Got response: ' + response.statusCode);
     
-    res.on('data', function(chunk){
+    response.on('data', function(chunk){
       console.log('BODY: ' + chunk);
-      body = chunk;
+      console.log(JSON.parse(chunk));
+      res.render('display', {title: 'Vote', items: JSON.parse(chunk)})
     });
   }).on('error', function(e){
-    console.log("Got error: " + e.message);
+    console.log('Got error: ' + e.message);
   });
-  */
-
+  /*
   body = {
     qid: 123456,
     title: 'これ、どれがいいですか？',
@@ -97,9 +101,40 @@ exports.display = function(req, res){
     ],
     username: 'kein'
   };
+  */
 
-  res.render('display', {title: 'Vote', items: body})
+  // res.render('display', {title: 'Vote', items: body})
 };
 
 exports.edit = function(req, res){
+};
+
+exports.vote = function(req, res){
+  req.body['qid'] = req.session.qid;
+
+  // send request to API
+  var options = {
+    host: '192.168.11.32',
+    port: 8099,
+    path: '/questions/vote',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/json'
+    }
+  };
+
+  var request = http.request(options, function(response){
+    response.setEncoding('utf8');
+    response.on('data', function(chunk){
+      console.log('BODY: ' + chunk);
+      res.render('vote', {title: 'Vote', items: JSON.parse(chunk)})
+    });
+  });
+
+  request.on('error', function(e){
+    console.log('problem with request: ' + e.message);
+  });
+
+  request.write(JSON.stringify(req.body));
+  request.end();
 };
