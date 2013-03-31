@@ -61,8 +61,8 @@ exports.display = function(req, res){
 
   // get response from API
   var options = {
-    host: '192.168.11.32',
-    port: 8099,
+    host: '',
+    port: 8080,
     path: '/questions/get?qid=' + req.query.qid
   };
 
@@ -114,8 +114,8 @@ exports.vote = function(req, res){
 
   // send request to API
   var options = {
-    host: '192.168.11.32',
-    port: 8099,
+    host: '',
+    port: 8080,
     path: '/questions/vote',
     method: 'POST',
     headers: {

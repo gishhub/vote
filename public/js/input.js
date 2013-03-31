@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
       title: {
         required: true
       },
-      description: {
+      text: {
         required: true
       },
       choice1: {
@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
       title: {
         required: "質問のタイトルは入力必須項目です"
       },
-      description: {
+      text: {
         required: "質問の詳細は入力必須項目です"
       },
       choice1: {
