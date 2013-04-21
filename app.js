@@ -20,6 +20,10 @@ app.configure(function(){
   app.use(express.session({secret: 'secret'}));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+  app.use(function(req, res, next){
+    res.status(404);
+    res.render('index', {title: 'Vote'})
+  });
 });
 
 app.configure('development', function(){
@@ -47,8 +51,8 @@ app.get('/input', routes.input);
 app.post('/confirm', routes.confirm);
 app.post('/regist', routes.regist);
 app.get('/display*', routes.display);
-app.post('/edit', routes.edit);
 app.post('/vote', routes.vote);
+// app.post('/edit', routes.edit);
 
 app.listen(3000, function(){
   console.log('Express server listening on port %d in %s mode', app.address().port, app.settings.env);

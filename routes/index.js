@@ -58,6 +58,7 @@ exports.display = function(req, res){
   console.log(req.query.qid);
 
   req.session.qid = req.query.qid;
+  console.log(req.session.qid);
 
   // get response from API
   var options = {
@@ -100,7 +101,9 @@ exports.vote = function(req, res){
     response.setEncoding('utf8');
     response.on('data', function(chunk){
       console.log('BODY: ' + chunk);
-      res.render('vote', {title: 'Vote', items: JSON.parse(chunk)})
+      var json = JSON.parse(chunk);
+      json['qid'] = req.session.qid;
+      res.render('vote', {title: 'Vote', items: json})
     });
   });
 

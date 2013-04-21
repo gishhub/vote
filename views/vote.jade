@@ -13,10 +13,10 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/display.css")
   br
 
   .container
-    form.well(method="post", action="/vote")
+    .well
       alert.alert-error
         h1 投票に成功しました。
-      br
+      hr
 
       h2 #{items.title}
       hr
@@ -28,39 +28,31 @@ link(rel="stylesheet", type="text/css", href="/stylesheets/display.css")
       h3 #{items.text}
       hr
 
-      alert.alert-error
-        h4 どれかひとつ選択してください
-        br
-
       - items.choices.forEach(function(choice){
-        label.radio
-          case choice.id
-            when 1
-              input(type="radio", id="#{choice.id}", name="choice", value="#{choice.id}", checked)
-            default
-              input(type="radio", id="#{choice.id}", name="choice", value="#{choice.id}")
-          strong #{choice.choice}
-          span.pull-right #{choice.vote}%
-          case choice.id
-            when 1
-              .progress.progress-danger.progress-striped.active
-                .bar(style="width: #{choice.vote}%;")
-            when 2
-              .progress.progress-info.progress-striped.active
-                .bar(style="width: #{choice.vote}%;")
-            when 3
-              .progress.progress-success.progress-striped.active
-                .bar(style="width: #{choice.vote}%;")
-            when 4
-              .progress.progress-striped.active
-                .bar(style="width: #{choice.vote}%;")
-            when 5
-              .progress.progress-warning.progress-striped.active
-                .bar(style="width: #{choice.vote}%;")
+        strong #{choice.choice}
+        span.pull-right #{choice.vote}%
+        case choice.id
+          when 1
+            .progress.progress-danger.progress-striped.active
+              .bar(style="width: #{choice.vote}%;")
+          when 2
+            .progress.progress-info.progress-striped.active
+              .bar(style="width: #{choice.vote}%;")
+          when 3
+            .progress.progress-success.progress-striped.active
+              .bar(style="width: #{choice.vote}%;")
+          when 4
+            .progress.progress-striped.active
+              .bar(style="width: #{choice.vote}%;")
+          when 5
+            .progress.progress-warning.progress-striped.active
+              .bar(style="width: #{choice.vote}%;")
       - })
-
+ 
       hr
-      button.btn-large.btn-primary(type="submit") 投票する
+      font(size=5)
+        質問に戻る場合は 
+        a(href="http://www8089uf.sakura.ne.jp:3000/display?qid=#{items.qid}") こちら
 
   hr
 
