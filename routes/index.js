@@ -77,33 +77,6 @@ exports.display = function(req, res){
   }).on('error', function(e){
     console.log('Got error: ' + e.message);
   });
-  /*
-  body = {
-    qid: 123456,
-    title: 'これ、どれがいいですか？',
-    text: 'これとあれとそれで迷ってるんですが、どれがいいですか？',
-    choices: [
-      {
-        id: 1,
-        choice: 'windows phone',
-        vote: 10
-      },
-      {
-        id: 2,
-        choice: 'android',
-        vote: 20
-      },
-      {
-        id: 3,
-        choice: 'iphone',
-        vote: 70
-      }
-    ],
-    username: 'kein'
-  };
-  */
-
-  // res.render('display', {title: 'Vote', items: body})
 };
 
 exports.edit = function(req, res){
