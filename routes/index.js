@@ -29,8 +29,8 @@ exports.regist = function(req, res){
 
   // send request to API
   var options = {
-    host: 'www8089uf.sakura.ne.jp',
-    port: 8099,
+    host: 'www.gish.tokyo.jp',
+    port: 9000,
     path: '/questions/post',
     method: 'PUT',
     headers: {
@@ -62,8 +62,8 @@ exports.display = function(req, res){
 
   // get response from API
   var options = {
-    host: 'www8089uf.sakura.ne.jp',
-    port: 8099,
+    host: 'www.gish.tokyo.jp',
+    port: 9000,
     path: '/questions/get?qid=' + req.query.qid
   };
 
@@ -88,8 +88,8 @@ exports.vote = function(req, res){
 
   // send request to API
   var options = {
-    host: 'www8089uf.sakura.ne.jp',
-    port: 8099,
+    host: 'www.gish.tokyo.jp',
+    port: 9000,
     path: '/questions/vote',
     method: 'POST',
     headers: {
